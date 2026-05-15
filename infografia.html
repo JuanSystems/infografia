@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infografía Formación Virtual SENA</title>
+    <style>
+      :root {
+        --sena-azul: #005baa;
+        --sena-azul-claro: #0088cc;
+        --sena-blanco: #ffffff;
+        --sena-gris: #f4f6f9;
+        --sena-texto: #2c3e50;
+        --sena-acento: #00bfa6;
+        --sena-gris-oscuro: #4a5568;
+        --sena-verde: #008c3b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #e2e8f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--sena-texto);
+        padding: 20px;
+      }
+
+      .infografia {
+        width: 1140px;
+        min-height: 720px;
+        background: var(--sena-blanco);
+        border-radius: 12px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        position: relative;
+      }
+
+      .infografia::before {
+        content: "";
+        position: absolute;
+        top: -150px;
+        right: -120px;
+        width: 400px;
+        height: 400px;
+        background: var(--sena-azul);
+        border-radius: 50%;
+        opacity: 0.03;
+        z-index: 0;
+      }
+      .infografia::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        left: -80px;
+        width: 300px;
+        height: 300px;
+        background: var(--sena-acento);
+        border-radius: 50%;
+        opacity: 0.04;
+        z-index: 0;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--sena-azul) 0%,
+          var(--sena-azul-claro) 100%
+        );
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: relative;
+      }
+
+      .titulo-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .titulo-header h1 {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .titulo-header p {
+        font-size: 13px;
+        opacity: 0.9;
+        margin-top: 4px;
+      }
+
+      /* Logo SENA - SVG con proporciones exactas */
+      .logo-sena {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 12px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .logo-sena svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .simbolos-sena {
+        display: flex;
+        gap: 24px;
+      }
+      .simbolo-item {
+        text-align: center;
+      }
+      .simbolo-item svg {
+        width: 42px;
+        height: 42px;
+        fill: white;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+      .simbolo-item span {
+        display: block;
+        font-size: 10px;
+        margin-top: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1.6fr 1fr;
+        gap: 24px;
+        padding: 24px 32px;
+        z-index: 1;
+        position: relative;
+      }
+
+      .panel {
+        background: var(--sena-gris);
+        border-radius: 10px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      }
+
+      .panel-titulo {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--sena-azul);
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--sena-acento);
+        padding-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dato {
+        font-size: 12px;
+        line-height: 1.6;
+        color: var(--sena-gris-oscuro);
+        text-align: left; /* CAMBIO: De justify a left */
+        hyphens: auto; /* AGREGADO: Permite guionizado automático */
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        word-wrap: break-word; /* AGREGADO: Permite romper palabras largas */
+        overflow-wrap: break-word;
+      }
+      .dato strong {
+        color: var(--sena-azul);
+      }
+
+      .etapas-flow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 12px 0;
+        position: relative;
+      }
+      .etapas-flow::before {
+        content: "";
+        position: absolute;
+        top: 22px;
+        left: 10%;
+        right: 10%;
+        height: 3px;
+        background: #cbd5e1;
+        z-index: 0;
+      }
+      .etapa-item {
+        background: white;
+        border: 2px solid var(--sena-azul);
+        padding: 12px 8px;
+        border-radius: 8px;
+        text-align: center;
+        flex: 1;
+        margin: 0 6px;
+        z-index: 1;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+      }
+      .etapa-num {
+        background: var(--sena-acento);
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+      .etapa-item h4 {
+        font-size: 11px;
+        color: var(--sena-azul);
+        margin-bottom: 4px;
+        font-weight: 700;
+      }
+      .etapa-item p {
+        font-size: 10px;
+        color: #64748b;
+        line-height: 1.3;
+      }
+
+      .evaluacion-box {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 8px;
+      }
+      .calif-card {
+        background: white;
+        border: 2px solid var(--sena-azul);
+        border-radius: 8px;
+        padding: 12px 16px;
+        text-align: center;
+        flex: 1;
+      }
+      .calif-letra {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--sena-azul);
+        display: block;
+      }
+      .calif-desc {
+        font-size: 10px;
+        color: #475569;
+        margin-top: 4px;
+        line-height: 1.4;
+      }
+
+      .alternativas-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .alt-chip {
+        background: white;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 10px 12px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--sena-texto);
+        text-align: center;
+        line-height: 1.4;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .trámites-list {
+        list-style: none;
+        padding: 0;
+      }
+      .trámites-list li {
+        font-size: 11px;
+        padding: 8px 0;
+        border-bottom: 1px dashed #cbd5e1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .trámites-list li:last-child {
+        border: none;
+      }
+      .tag {
+        background: var(--sena-azul);
+        color: white;
+        font-size: 9px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        font-weight: 600;
+      }
+
+      .claves-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .clave-item {
+        background: white;
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        line-height: 1.3;
+      }
+      .clave-icon {
+        font-size: 14px;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .infografia {
+          box-shadow: none;
+          border-radius: 0;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="infografia">
+      <header>
+        <div class="titulo-header">
+          <!-- Logo SENA - SVG preciso con proporciones exactas -->
+          <div class="logo-sena">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="300"
+              height="300"
+              viewBox="0 0 300 300"
+            >
+              <g>
+                <path
+                  d="M 79.12 243.11 C77.68,245.64 75.77,248.79 74.89,250.10 L 73.27 252.48 L 66.45 245.85 L 59.62 239.22 L 64.71 230.36 C96.58,174.87 103.00,163.42 103.00,162.02 C103.00,161.15 102.30,159.44 101.44,158.22 L 99.89 156.00 L 28.00 156.00 L 28.00 137.00 L 84.00 137.00 C114.80,137.00 140.00,137.21 140.00,137.46 C140.00,137.72 136.80,143.46 132.89,150.21 C122.02,168.99 107.64,193.82 97.67,211.00 C85.64,231.75 82.23,237.64 79.12,243.11 ZM 109.27 262.75 C106.81,266.74 104.73,269.96 104.65,269.92 C104.57,269.88 102.47,268.85 100.00,267.63 C97.53,266.41 94.03,264.63 92.24,263.68 L 88.99 261.94 L 91.14 257.72 C92.32,255.40 94.95,250.80 96.99,247.50 C100.83,241.25 104.20,235.50 122.99,203.00 C142.46,169.33 150.20,156.80 150.98,157.66 C151.67,158.43 170.27,189.42 200.39,240.00 C206.77,250.73 212.00,260.06 212.00,260.74 C212.00,261.42 208.42,263.78 204.05,265.97 L 196.11 269.97 L 187.68 255.73 C183.05,247.91 174.40,233.18 168.47,223.00 C154.53,199.11 154.45,199.00 151.18,199.02 C149.71,199.02 148.00,199.36 147.39,199.77 C146.04,200.67 138.69,212.61 124.50,237.00 C118.58,247.18 111.73,258.76 109.27,262.75 ZM 240.34 239.82 C239.81,240.66 236.63,243.77 233.27,246.74 L 227.16 252.12 L 224.68 247.81 C223.32,245.44 217.82,235.85 212.45,226.50 C207.09,217.15 201.80,207.93 200.69,206.00 C199.58,204.07 193.85,193.95 187.95,183.50 C182.06,173.05 173.83,158.66 169.66,151.52 C161.88,138.19 161.64,136.92 167.00,137.48 C168.38,137.63 192.81,137.80 221.29,137.87 L 273.08 138.00 L 272.50 155.50 L 236.50 155.75 C204.08,155.98 200.38,156.18 199.25,157.70 C196.95,160.80 197.96,163.73 206.31,178.15 C210.89,186.04 218.14,198.57 222.44,206.00 C226.73,213.43 232.74,223.73 235.78,228.89 C239.90,235.89 241.07,238.67 240.34,239.82 ZM 161.97 81.52 C158.48,83.32 149.54,84.17 145.33,83.09 C139.85,81.70 133.17,77.11 130.21,72.73 C125.60,65.89 124.69,62.64 125.23,55.05 C125.87,46.09 129.20,40.21 136.33,35.48 C145.58,29.34 158.99,29.65 167.26,36.21 C182.76,48.49 179.99,72.20 161.97,81.52 ZM 159.78 116.75 L 159.50 127.50 L 152.96 127.79 C149.36,127.95 146.10,127.76 145.71,127.37 C145.32,126.99 145.00,119.09 145.00,109.83 L 145.00 93.00 L 164.70 93.00 L 174.10 103.42 C179.27,109.15 183.80,113.88 184.17,113.92 C185.45,114.07 186.15,108.02 185.47,102.63 C184.36,93.73 184.94,93.00 193.09,93.00 L 200.05 93.00 L 199.77 110.25 L 199.50 127.50 L 180.50 128.05 L 171.15 117.03 C166.00,110.96 161.40,106.00 160.93,106.00 C160.46,106.00 159.94,110.84 159.78,116.75 ZM 219.62 125.06 C217.96,127.87 217.58,128.00 210.83,128.00 C204.37,128.00 203.81,127.84 204.27,126.09 C204.54,125.04 209.66,117.17 215.63,108.61 L 226.50 93.03 L 235.23 93.02 L 243.96 93.00 L 254.93 109.67 C260.97,118.84 265.68,126.71 265.39,127.17 C265.11,127.63 261.51,128.00 257.39,128.00 C250.15,128.00 249.85,127.90 248.21,125.04 C246.23,121.59 245.19,121.39 231.43,121.81 C221.48,122.12 221.34,122.16 219.62,125.06 ZM 76.95 125.94 C69.32,127.62 58.24,128.10 53.50,126.97 C51.30,126.44 48.56,125.79 47.42,125.53 C44.38,124.82 40.00,120.41 40.00,118.05 C40.00,116.18 40.61,116.00 47.14,116.00 C52.44,116.00 54.57,116.40 55.42,117.55 C57.88,120.92 68.55,121.46 71.14,118.34 C72.96,116.14 71.21,115.20 63.00,113.97 C47.60,111.65 42.12,108.98 40.69,103.09 C39.24,97.13 46.00,93.13 58.93,92.29 C75.16,91.24 85.50,94.25 85.50,100.04 C85.50,102.43 85.32,102.49 79.01,102.19 C75.17,102.01 71.88,101.29 70.93,100.44 C69.04,98.72 58.46,98.45 57.44,100.10 C56.19,102.13 59.46,103.89 66.50,104.98 C70.35,105.58 75.83,106.73 78.68,107.54 C91.73,111.26 90.63,122.94 76.95,125.94 ZM 137.12 120.00 L 136.50 127.50 L 116.44 127.77 C105.40,127.92 96.06,127.73 95.69,127.35 C95.31,126.98 95.00,119.09 95.00,109.83 L 95.00 93.00 L 136.00 93.00 L 136.00 95.80 C136.00,100.46 134.57,101.00 122.30,101.00 L 111.00 101.00 L 111.00 106.00 L 134.13 106.00 L 133.81 109.25 L 133.50 112.50 L 111.50 113.50 L 111.19 116.75 L 110.87 120.00 ZM 227.00 113.40 C227.00,114.30 239.81,114.12 240.37,113.21 C240.92,112.32 235.19,101.98 234.17,102.03 C233.48,102.06 227.00,112.34 227.00,113.40 Z"
+                  fill="rgb(79,140,57)"
+                />
+                <path
+                  d="M 0.00 150.00 L 0.00 0.00 L 150.00 0.00 L 300.00 0.00 L 300.00 150.00 L 300.00 300.00 L 150.00 300.00 L 0.00 300.00 L 0.00 150.00 ZM 109.27 262.75 C111.73,258.76 118.58,247.18 124.50,237.00 C138.69,212.61 146.04,200.67 147.39,199.77 C148.00,199.36 149.71,199.02 151.18,199.02 C154.45,199.00 154.53,199.11 168.47,223.00 C174.40,233.18 183.05,247.91 187.68,255.73 L 196.11 269.97 L 204.05 265.97 C208.42,263.78 212.00,261.42 212.00,260.74 C212.00,260.06 206.77,250.73 200.39,240.00 C170.27,189.42 151.67,158.43 150.98,157.66 C150.20,156.80 142.46,169.33 122.99,203.00 C104.20,235.50 100.83,241.25 96.99,247.50 C94.95,250.80 92.32,255.40 91.14,257.72 L 88.99 261.94 L 92.24 263.68 C94.03,264.63 97.53,266.41 100.00,267.63 C102.47,268.85 104.57,269.88 104.65,269.92 C104.73,269.96 106.81,266.74 109.27,262.75 ZM 79.12 243.11 C82.23,237.64 85.64,231.75 97.67,211.00 C107.64,193.82 122.02,168.99 132.89,150.21 C136.80,143.46 140.00,137.72 140.00,137.46 C140.00,137.21 114.80,137.00 84.00,137.00 L 28.00 137.00 L 28.00 146.50 L 28.00 156.00 L 63.94 156.00 L 99.89 156.00 L 101.44 158.22 C102.30,159.44 103.00,161.15 103.00,162.02 C103.00,163.42 96.58,174.87 64.71,230.36 L 59.62 239.22 L 66.45 245.85 L 73.27 252.48 L 74.89 250.10 C75.77,248.79 77.68,245.64 79.12,243.11 ZM 240.34 239.82 C241.07,238.67 239.90,235.89 235.78,228.89 C232.74,223.73 226.73,213.43 222.44,206.00 C218.14,198.57 210.89,186.04 206.31,178.15 C197.96,163.73 196.95,160.80 199.25,157.70 C200.38,156.18 204.08,155.98 236.50,155.75 L 272.50 155.50 L 272.79 146.75 L 273.08 138.00 L 221.29 137.87 C192.81,137.80 168.38,137.63 167.00,137.48 C161.64,136.92 161.88,138.19 169.66,151.52 C173.83,158.66 182.06,173.05 187.95,183.50 C193.85,193.95 199.58,204.07 200.69,206.00 C201.80,207.93 207.09,217.15 212.45,226.50 C217.82,235.85 223.32,245.44 224.68,247.81 L 227.16 252.12 L 233.27 246.74 C236.63,243.77 239.81,240.66 240.34,239.82 ZM 76.95 125.94 C90.63,122.94 91.73,111.26 78.68,107.54 C75.83,106.73 70.35,105.58 66.50,104.98 C59.46,103.89 56.19,102.13 57.44,100.10 C58.46,98.45 69.04,98.72 70.93,100.44 C71.88,101.29 75.17,102.01 79.01,102.19 C85.32,102.49 85.50,102.43 85.50,100.04 C85.50,94.25 75.16,91.24 58.93,92.29 C46.00,93.13 39.24,97.13 40.69,103.09 C42.12,108.98 47.60,111.65 63.00,113.97 C71.21,115.20 72.96,116.14 71.14,118.34 C68.55,121.46 57.88,120.92 55.42,117.55 C54.57,116.40 52.44,116.00 47.14,116.00 C40.61,116.00 40.00,116.18 40.00,118.05 C40.00,120.41 44.38,124.82 47.42,125.53 C48.56,125.79 51.30,126.44 53.50,126.97 C58.24,128.10 69.32,127.62 76.95,125.94 ZM 136.81 123.75 L 137.12 120.00 L 124.00 120.00 L 110.87 120.00 L 111.19 116.75 L 111.50 113.50 L 122.50 113.00 L 133.50 112.50 L 133.81 109.25 L 134.13 106.00 L 122.56 106.00 L 111.00 106.00 L 111.00 103.50 L 111.00 101.00 L 122.30 101.00 C134.57,101.00 136.00,100.46 136.00,95.80 L 136.00 93.00 L 115.50 93.00 L 95.00 93.00 L 95.00 109.83 C95.00,119.09 95.31,126.98 95.69,127.35 C96.06,127.73 105.40,127.92 116.44,127.77 L 136.50 127.50 L 136.81 123.75 ZM 159.78 116.75 C159.94,110.84 160.46,106.00 160.93,106.00 C161.40,106.00 166.00,110.96 171.15,117.03 L 180.50 128.05 L 190.00 127.78 L 199.50 127.50 L 199.77 110.25 L 200.05 93.00 L 193.09 93.00 C184.94,93.00 184.36,93.73 185.47,102.63 C186.15,108.02 185.45,114.07 184.17,113.92 C183.80,113.88 179.27,109.15 174.10,103.42 L 164.70 93.00 L 154.85 93.00 L 145.00 93.00 L 145.00 109.83 C145.00,119.09 145.32,126.99 145.71,127.37 C146.10,127.76 149.36,127.95 152.96,127.79 L 159.50 127.50 L 159.78 116.75 ZM 219.62 125.06 C221.34,122.16 221.48,122.12 231.43,121.81 C245.19,121.39 246.23,121.59 248.21,125.04 C249.85,127.90 250.15,128.00 257.39,128.00 C261.51,128.00 265.11,127.63 265.39,127.17 C265.68,126.71 260.97,118.84 254.93,109.67 L 243.96 93.00 L 235.23 93.02 L 226.50 93.03 L 215.63 108.61 C209.66,117.17 204.54,125.04 204.27,126.09 C203.81,127.84 204.37,128.00 210.83,128.00 C217.58,128.00 217.96,127.87 219.62,125.06 ZM 161.97 81.52 C179.99,72.20 182.76,48.49 167.26,36.21 C158.99,29.65 145.58,29.34 136.33,35.48 C129.20,40.21 125.87,46.09 125.23,55.05 C124.69,62.64 125.60,65.89 130.21,72.73 C133.17,77.11 139.85,81.70 145.33,83.09 C149.54,84.17 158.48,83.32 161.97,81.52 ZM 227.00 113.40 C227.00,112.34 233.48,102.06 234.17,102.03 C235.19,101.98 240.92,112.32 240.37,113.21 C239.81,114.12 227.00,114.30 227.00,113.40 Z"
+                  fill="rgb(253,254,253)"
+                />
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h1>Formación Virtual SENA</h1>
+            <p>
+              Guía Institucional · Reglamento del Aprendiz · Acuerdo 007 de 2012
+            </p>
+          </div>
+        </div>
+        <div class="simbolos-sena">
+          <div class="simbolo-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2L10 6H6L4 2L2 4L6 8L2 12L4 14L8 10L12 14L10 18H6L4 22L6 24L10 20L14 24L16 22L12 18L16 14L20 18L22 16L18 12L22 8L20 6L16 10L12 6L14 2Z"
+              />
+            </svg>
+            <span>Industria</span>
+          </div>
+          <div class="simbolo-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2C10.9 2 10 2.9 10 4V6H8V8H10V18C7.8 18 6 16.2 6 14H4C4 17.3 6.7 20 10 20V22H14V20C17.3 20 20 17.3 20 14H18C18 16.2 16.2 18 14 18V8H16V6H14V4C14 2.9 13.1 2 12 2ZM12 4C11.4 4 11 4.4 11 5V6H13V5C13 4.4 12.6 4 12 4Z"
+              />
+            </svg>
+            <span>Comercio</span>
+          </div>
+          <div class="simbolo-item">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2C10.5 2 9 3 8.5 4.5C7 4 5.5 5 5 6.5C3.5 7 2.5 8.5 3 10C2 11.5 2.5 13 4 14C3.5 15.5 4.5 17 6 17.5C5.5 19 6.5 20.5 8 21C9.5 22 11 21 12 19.5C13 21 14.5 22 16 21C17.5 20.5 18.5 19 18 17.5C19.5 17 20.5 15.5 20 14C21.5 13 22 11.5 21 10C22.5 8.5 21.5 7 20 6.5C18.5 5 17 6 15.5 5C14.5 3.5 13.5 2 12 2ZM12 4C12.8 4 13.5 4.5 14 5.5C14.5 6.5 14.5 8 14 9C13.5 10 12.5 10.5 12 10C11.5 10.5 10.5 10 10 9C9.5 8 9.5 6.5 10 5.5C10.5 4.5 11.2 4 12 4Z"
+              />
+            </svg>
+            <span>Agropecuario</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <div class="panel-titulo">🏛️ SENA en Breve</div>
+          <div class="dato">
+            <strong>Servicio Nacional de Aprendizaje:</strong> Entidad estatal
+            descentralizada fundada en 1957 por el Dr. Rodolfo Martínez Tono.
+            Alianza tripartita entre Gobierno, empresarios y trabajadores.
+          </div>
+          <div class="dato">
+            <strong>Misión:</strong> Invertir en el desarrollo social y técnico
+            de los colombianos mediante formación profesional integral gratuita.
+          </div>
+          <div class="dato">
+            <strong>Visión 2026:</strong> Vanguardia en cualificación, economía
+            verde/digital, paz total y justicia social con enfoque diferencial.
+          </div>
+          <div style="display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap">
+            <span class="tag">💡 100% Gratuito</span>
+            <span class="tag"> Cobertura Nacional</span>
+            <span class="tag">🎓 +60 Años</span>
+          </div>
+          <div class="panel-titulo" style="margin-top: 10px">
+            ️ Derechos & Deberes
+          </div>
+          <div class="dato">
+            ✅ Formación de calidad, evaluación objetiva, revisión de
+            calificaciones, trato digno, certificación.
+          </div>
+          <div class="dato">
+            Cumplir actividades, portar carné, uso adecuado de recursos, respeto
+            a propiedad intelectual, aseo y pulcritud.
+          </div>
+          <div class="panel-titulo" style="margin-top: 10px">
+            🎯 Oportunidades Egresados
+          </div>
+          <div class="alternativas-grid">
+            <div class="alt-chip">Agencia Empleo</div>
+            <div class="alt-chip">Fondo Emprender</div>
+            <div class="alt-chip">Convenios Universitarios</div>
+            <div class="alt-chip">Internacionalización</div>
+          </div>
+        </section>
+
+        <section
+          class="panel"
+          style="
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+          "
+        >
+          <div class="panel-titulo">🔄 Ruta de Aprendizaje Virtual</div>
+          <div class="etapas-flow">
+            <div class="etapa-item">
+              <div class="etapa-num">1</div>
+              <h4>Inducción</h4>
+              <p>Reglamento, plataforma y metodología</p>
+            </div>
+            <div class="etapa-item">
+              <div class="etapa-num">2</div>
+              <h4>Etapa Lectiva</h4>
+              <p>Formación por proyectos, TIC, tutoría</p>
+            </div>
+            <div class="etapa-item">
+              <div class="etapa-num">3</div>
+              <h4>Productiva</h4>
+              <p>864 horas (6 meses) en entorno real</p>
+            </div>
+            <div class="etapa-item">
+              <div class="etapa-num">4</div>
+              <h4>Certificación</h4>
+              <p>Evaluación final y título técnico/tecnólogo</p>
+            </div>
+          </div>
+
+          <div class="panel-titulo">Sistema de Evaluación por Competencias</div>
+          <div class="evaluacion-box">
+            <div class="calif-card">
+              <span class="calif-letra">A</span>
+              <span class="calif-desc">APROBADO<br />Cumple estándares</span>
+            </div>
+            <div class="calif-card">
+              <span class="calif-letra">D</span>
+              <span class="calif-desc"
+                >DEFICIENTE<br />Requiere mejoramiento</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              justify-content: center;
+              margin-top: 12px;
+            "
+          >
+            <div
+              style="
+                background: white;
+                padding: 10px 12px;
+                border-radius: 6px;
+                border: 1px solid #cbd5e1;
+                text-align: center;
+                flex: 1;
+                font-size: 11px;
+              "
+            >
+              <strong> Conocimiento</strong><br />Teórico-cognitivo
+            </div>
+            <div
+              style="
+                background: white;
+                padding: 10px 12px;
+                border-radius: 6px;
+                border: 1px solid #cbd5e1;
+                text-align: center;
+                flex: 1;
+                font-size: 11px;
+              "
+            >
+              <strong>🛠️ Desempeño</strong><br />Procedimental
+            </div>
+            <div
+              style="
+                background: white;
+                padding: 10px 12px;
+                border-radius: 6px;
+                border: 1px solid #cbd5e1;
+                text-align: center;
+                flex: 1;
+                font-size: 11px;
+              "
+            >
+              <strong>📦 Producto</strong><br />Resultados acabados
+            </div>
+          </div>
+
+          <div class="panel-titulo" style="margin-top: 14px">
+            💼 Alternativas Etapa Productiva
+          </div>
+          <div
+            class="alternativas-grid"
+            style="grid-template-columns: repeat(3, 1fr)"
+          >
+            <div class="alt-chip">Contrato Aprendizaje</div>
+            <div class="alt-chip">Vinculación Laboral</div>
+            <div class="alt-chip">Proyecto Productivo</div>
+            <div class="alt-chip">Entidad Estatal/ONG</div>
+            <div class="alt-chip">Monitoría SENA</div>
+            <div class="alt-chip">Unidad Familiar</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-titulo">📄 Trámites Administrativos</div>
+          <ul class="trámites-list">
+            <li>
+              <strong>Traslado</strong>
+              <span class="tag">Mín. 1 trimestre</span>
+            </li>
+            <li>
+              <strong>Aplazamiento</strong>
+              <span class="tag">Máx. 6 meses</span>
+            </li>
+            <li>
+              <strong>Reingreso</strong> <span class="tag">Sujeto a cupo</span>
+            </li>
+            <li>
+              <strong>Retiro Voluntario</strong>
+              <span class="tag">6 meses bloqueo</span>
+            </li>
+          </ul>
+
+          <div class="panel-titulo">⚠️ Causales de Deserción</div>
+          <div class="dato">
+            🚫 3 días consecutivos sin justificación (presencial)<br />
+            No reingreso tras aplazamiento<br />
+            2 años sin evidencia productiva
+          </div>
+
+          <div class="panel-titulo" style="margin-top: 12px">
+            📈 Planes de Mejoramiento
+          </div>
+          <div class="dato">
+            <strong>Académico:</strong> Nuevas estrategias para logro de
+            resultados (1 mes).
+          </div>
+          <div class="dato">
+            <strong>Disciplinario:</strong> Cambio actitudinal/comportamental
+            tras sanción (1 mes).
+          </div>
+
+          <div class="panel-titulo" style="margin-top: 12px">
+            💡 Claves Formación Virtual
+          </div>
+          <div class="claves-grid">
+            <div class="clave-item">
+              <span class="clave-icon">🕐</span>
+              <span>Flexibilidad 24/7</span>
+            </div>
+            <div class="clave-item">
+              <span class="clave-icon">💻</span>
+              <span>Ambientes virtuales</span>
+            </div>
+            <div class="clave-item">
+              <span class="clave-icon">👥</span>
+              <span>Trabajo colaborativo</span>
+            </div>
+            <div class="clave-item">
+              <span class="clave-icon"></span>
+              <span>Recursos multimedia</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
